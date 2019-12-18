@@ -1,2 +1,2 @@
-# stack
-C-scrap class providing a stack ADT.
+# stack 0.0.0.
+
