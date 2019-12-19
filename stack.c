@@ -1,7 +1,7 @@
 /**
  *  @file stack.c
  *  @version 0.2.0-dev0
- *  @date Thu Dec 19 14:13:46 CST 2019
+ *  @date Thu Dec 19 14:27:27 CST 2019
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
  *  @details FIXME
@@ -28,9 +28,8 @@ struct stnode {
 static struct stnode *
 stnode_new(void)
 {
-   struct stnode *tp;
+   struct stnode *tp = (struct stnode *) malloc(sizeof(struct stnode));
 
-   tp = (struct stnode *) malloc(sizeof(struct stnode));
    if (_IS_NULL(tp))
       return NULL;
 
@@ -55,9 +54,8 @@ struct stack {
 struct stack *
 stack_new(void)
 {
-   struct stack *tp;
+   struct stack *tp = (struct stack *) malloc(sizeof(struct stack));
 
-   tp = (struct stack *) malloc(sizeof(struct stack));
    if (_IS_NULL(tp))
       return NULL;
 
