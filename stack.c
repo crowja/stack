@@ -72,7 +72,6 @@ stack_new(void)
 void
 stack_free(struct stack **pp)
 {
-
    /* Do some magic here ... */
 
    _FREE(*pp);
@@ -93,6 +92,32 @@ const char *
 stack_version(void)
 {
    return "0.0.0";
+}
+
+int stack_is_empty(struct stack *p) {
+   return _IS_NULL(p->head) ? 1 : 0;
+}
+
+int stack_peek(struct stack *p, void **x) {
+   if (_IS_NULL(p->head))
+      return 0;
+
+   *x = p->head->x;
+
+   return 1;
+}
+
+int stack_pop(struct stack *p, void **x) {
+   if (_IS_NULL(p->head))
+      return 0;
+
+   else {
+      struct stnode *tmp = p->head->next;
+      *x = p->head->x;
+      stnode_free(&(p->head));
+      p->head = tmp;
+      return 1;
+   }
 }
 
 #undef  _IS_NULL

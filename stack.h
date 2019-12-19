@@ -46,4 +46,8 @@ int         stack_init(struct stack *p, void *x);
  */
 const char *stack_version(void);
 
+int stack_is_empty(struct stack *p);
+int stack_peek(struct stack *p, void **x);
+int stack_pop(struct stack *p, void **x);
+
 #endif
