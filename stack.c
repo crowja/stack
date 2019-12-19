@@ -1,15 +1,13 @@
 /**
  *  @file stack.c
  *  @version 0.0.0
- *  @date Wed Dec 18 15:59:10 CST 2019
+ *  @date Thu Dec 19 13:57:12 CST 2019
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
  *  @details FIXME
  */
 
 #include <stdlib.h>
-#include <stdio.h>                               /* FIXME */
-#include <string.h>                              /* FIXME */
 #include "stack.h"
 
 #ifdef  _IS_NULL
@@ -23,7 +21,7 @@
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 struct stnode {
-   void *x;
+   void       *x;
    struct stnode *next;
 };
 
@@ -72,20 +70,14 @@ stack_new(void)
 void
 stack_free(struct stack **pp)
 {
-   /* Do some magic here ... */
+   while (!_IS_NULL((*pp)->head)) {
+      struct stnode *tmp = (*pp)->head->next;
+      stnode_free(&((*pp)->head));
+      (*pp)->head = tmp;
+   }
 
    _FREE(*pp);
    *pp = NULL;
-}
-
-int
-stack_init(struct stack *p, void *x)
-{
-
-   /* Do some magic here ... */
-   p->x = x;                                     /* FIXME */
-
-   return 0;
 }
 
 const char *
@@ -94,11 +86,15 @@ stack_version(void)
    return "0.0.0";
 }
 
-int stack_is_empty(struct stack *p) {
+int
+stack_is_empty(struct stack *p)
+{
    return _IS_NULL(p->head) ? 1 : 0;
 }
 
-int stack_peek(struct stack *p, void **x) {
+int
+stack_peek(struct stack *p, void **x)
+{
    if (_IS_NULL(p->head))
       return 0;
 
@@ -107,7 +103,9 @@ int stack_peek(struct stack *p, void **x) {
    return 1;
 }
 
-int stack_pop(struct stack *p, void **x) {
+int
+stack_pop(struct stack *p, void **x)
+{
    if (_IS_NULL(p->head))
       return 0;
 
@@ -118,6 +116,26 @@ int stack_pop(struct stack *p, void **x) {
       p->head = tmp;
       return 1;
    }
+}
+
+int
+stack_push(struct stack *p, void *x)
+{
+   struct stnode *n = stnode_new();
+
+   if (_IS_NULL(n))
+      return 1;
+
+   if (_IS_NULL(p->head))                        /* list is empty */
+      n->next = NULL;
+
+   else
+      n->next = p->head;
+
+   n->x = x;
+   p->head = n;
+
+   return 0;
 }
 
 #undef  _IS_NULL
