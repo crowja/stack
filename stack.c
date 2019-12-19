@@ -1,6 +1,6 @@
 /**
  *  @file stack.c
- *  @version 0.1.0-dev0
+ *  @version 0.2.0-dev0
  *  @date Thu Dec 19 14:13:46 CST 2019
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
@@ -83,7 +83,7 @@ stack_free(struct stack **pp)
 const char *
 stack_version(void)
 {
-   return "0.1.0-dev0";
+   return "0.2.0-dev0";
 }
 
 int
