@@ -2,9 +2,8 @@
  *  @file stack.h
  *  @version 0.2.0-dev0
  *  @date Thu Dec 19 14:27:27 CST 2019
- *  @copyright %COPYRIGHT%
- *  @brief FIXME
- *  @details FIXME
+ *  @copyright 2020 John A. Crow <crowja@gmail.com>
+ *  @license Unlicense <http://unlicense.org/>
  */
 
 #ifndef _STACK_H_
