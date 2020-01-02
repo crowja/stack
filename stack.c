@@ -1,6 +1,6 @@
 /**
  *  @file stack.c
- *  @version 0.2.0-dev0
+ *  @version 0.3.0-dev0
  *  @date Thu Dec 19 14:27:27 CST 2019
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
@@ -80,7 +80,7 @@ stack_free(struct stack **pp)
 const char *
 stack_version(void)
 {
-   return "0.2.0-dev0";
+   return "0.3.0-dev0";
 }
 
 int

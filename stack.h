@@ -1,6 +1,6 @@
 /**
  *  @file stack.h
- *  @version 0.2.0-dev0
+ *  @version 0.3.0-dev0
  *  @date Thu Dec 19 14:27:27 CST 2019
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>

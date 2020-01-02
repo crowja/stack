@@ -1,2 +1,2 @@
-# stack 0.2.0-dev0.
+# stack 0.3.0-dev0.
 
