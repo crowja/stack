@@ -1,7 +1,7 @@
 /**
  *  @file stack.c
  *  @version 0.3.0-dev0
- *  @date Thu Dec 19 14:27:27 CST 2019
+ *  @date Sun Feb 16, 2020 05:06:33 PM CST
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
  */
@@ -9,15 +9,15 @@
 #include <stdlib.h>
 #include "stack.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  IS_NULL
+#undef  IS_NULL
 #endif
-#define _IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
+#define IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
 
-#ifdef  _FREE
-#undef  _FREE
+#ifdef  FREE
+#undef  FREE
 #endif
-#define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
+#define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 struct stnode {
    void       *x;
@@ -29,7 +29,7 @@ stnode_new(void)
 {
    struct stnode *tp = (struct stnode *) malloc(sizeof(struct stnode));
 
-   if (_IS_NULL(tp))
+   if (IS_NULL(tp))
       return NULL;
 
    tp->x = NULL;
@@ -41,7 +41,7 @@ stnode_new(void)
 static void
 stnode_free(struct stnode **pp)
 {
-   _FREE(*pp);
+   FREE(*pp);
    *pp = NULL;
 }
 
@@ -55,7 +55,7 @@ stack_new(void)
 {
    struct stack *tp = (struct stack *) malloc(sizeof(struct stack));
 
-   if (_IS_NULL(tp))
+   if (IS_NULL(tp))
       return NULL;
 
    tp->x = NULL;
@@ -67,13 +67,13 @@ stack_new(void)
 void
 stack_free(struct stack **pp)
 {
-   while (!_IS_NULL((*pp)->head)) {
+   while (!IS_NULL((*pp)->head)) {
       struct stnode *tmp = (*pp)->head->next;
       stnode_free(&((*pp)->head));
       (*pp)->head = tmp;
    }
 
-   _FREE(*pp);
+   FREE(*pp);
    *pp = NULL;
 }
 
@@ -86,13 +86,13 @@ stack_version(void)
 int
 stack_is_empty(struct stack *p)
 {
-   return _IS_NULL(p->head) ? 1 : 0;
+   return IS_NULL(p->head) ? 1 : 0;
 }
 
 int
 stack_peek(struct stack *p, void **x)
 {
-   if (_IS_NULL(p->head))
+   if (IS_NULL(p->head))
       return 0;
 
    *x = p->head->x;
@@ -103,7 +103,7 @@ stack_peek(struct stack *p, void **x)
 int
 stack_pop(struct stack *p, void **x)
 {
-   if (_IS_NULL(p->head))
+   if (IS_NULL(p->head))
       return 0;
 
    else {
@@ -120,10 +120,10 @@ stack_push(struct stack *p, void *x)
 {
    struct stnode *n = stnode_new();
 
-   if (_IS_NULL(n))
+   if (IS_NULL(n))
       return 1;
 
-   if (_IS_NULL(p->head))                        /* list is empty */
+   if (IS_NULL(p->head))                         /* list is empty */
       n->next = NULL;
 
    else
@@ -135,5 +135,5 @@ stack_push(struct stack *p, void *x)
    return 0;
 }
 
-#undef  _IS_NULL
-#undef  _FREE
+#undef  IS_NULL
+#undef  FREE

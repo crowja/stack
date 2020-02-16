@@ -1,18 +1,13 @@
 /**
  *  @file stack.h
  *  @version 0.3.0-dev0
- *  @date Thu Dec 19 14:27:27 CST 2019
+ *  @date Sun Feb 16, 2020 05:06:33 PM CST
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
  */
 
-#ifndef _STACK_H_
-#define _STACK_H_
-
-#ifdef  _PACKAGE_NAME
-#undef  _PACKAGE_NAME
-#endif
-#define _PACKAGE_NAME "stack"
+#ifndef STACK_H
+#define STACK_H
 
 struct stack;
 
